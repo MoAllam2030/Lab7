@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-public class Course
-{
+public class Course {
+
     private String courseId;
     private String title;
     private String description;
     private String instructorId;
     private List<Lesson> lessons;
-    private List<String> students; // List of enrolled student IDs
+    private List<String> students; 
 
-    public Course(String courseId, String title, String description, String instructorId)
-    {
+    public Course(String courseId, String title, String description, String instructorId) {
         this.courseId = courseId;
         this.title = title;
         this.description = description;
@@ -48,28 +47,56 @@ public class Course
     }
 
     // Getters and setters
-    public String getCourseId() { return courseId; }
-    public String getTitle() { return title; }
-    public String getDescription() { return description; }
-    public String getInstructorId() { return instructorId; }
-    public List<Lesson> getLessons() { return lessons; }
-    public List<String> getStudents() { return students; }
-
-    public void addLesson(Lesson lesson) { lessons.add(lesson); }
-    public void enrollStudent(String studentId) { students.add(studentId); }
-    
-    public Lesson getLessonById(String lessonId)
-    {
-    for (Lesson lesson : lessons)
-    {
-        if (lesson.getLessonId().equals(lessonId))
-        {
-            return lesson;
-        }
+    public String getCourseId() {
+        return courseId;
     }
-    return null; // not found
-}
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getInstructorId() {
+        return instructorId;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public List<String> getStudents() {
+        return students;
+    }
+
+    public void addLesson(Lesson lesson) throws Exception {
+        for (Lesson l : lessons) {
+            if (lesson.getTitle().equals(l.getTitle())) {
+                throw new Exception("Lesson already exists");
+            }
+        }
+        lessons.add(lesson);
+    }
+
+    public void enrollStudent(String studentId) throws Exception {
+        for (String s : students) {
+            if (studentId.equals(s)) {
+                throw new Exception("Student already exists");
+            }
+        }
+        students.add(studentId);
+    }
+
+    public Lesson getLessonById(String lessonId) {
+        for (Lesson lesson : lessons) {
+            if (lesson.getLessonId().equals(lessonId)) {
+                return lesson;
+            }
+        }
+        return null; // not found
+    }
 
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
