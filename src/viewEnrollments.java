@@ -1,3 +1,10 @@
+
+import Lab7.Course;
+import Lab7.Student;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +15,32 @@
  * @author adham
  */
 public class viewEnrollments extends javax.swing.JFrame {
-
+Student adm;
     /**
      * Creates new form viewEnrollments
      */
-    public viewEnrollments() {
+
+
+   
+    public viewEnrollments(Student adm) {
         initComponents();
+        this.adm = adm;
+        loadEnrollments();
+    }
+    public void loadEnrollments() {
+        List<String> enrollments = adm.getEnrolledCourses();
+        DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+        df.setRowCount(0);
+
+        for (int i = 0; i < enrollments.size(); i++) {
+            String e = enrollments.get(i);
+            Course c = adm.getCourseById(e.getCourseId());
+            df.addRow(new Object[]{
+                c.getCourseID(),
+                c.getCourseName(),
+                c.getInstructor()
+            });
+        }
     }
 
     /**
