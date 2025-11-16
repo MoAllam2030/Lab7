@@ -1,18 +1,8 @@
-[
-  {
-    "userId": "U1",
-    "username": "Alice",
-    "email": "alice@example.com",
-    "passwordHash": "a1b2c3...",
-    "role": "Student",
-    "enrolledCourses": ["C1","C2"]
-  },
-  {
-    "userId": "U2",
-    "username": "Bob",
-    "email": "bob@example.com",
-    "passwordHash": "d4e5f6...",
+[{
     "role": "Instructor",
-    "createdCourses": ["C1"]
-  }
-]
+    "createdCourses": [],
+    "userId": "U1",
+    "email": "ad@ad.com",
+    "passwordHash": "93d0f83b8dee6fd208d0804c80d0819d1b2cb39d11ddd553291627943e4d0394",
+    "username": "adh"
+}]

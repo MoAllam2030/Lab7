@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 public class Instructor extends User 
 {
+
+   
     private List<String> createdCourses;
 
     public Instructor(String userId, String username, String email, String passwordHash)
@@ -30,4 +32,5 @@ public class Instructor extends User
         obj.put("createdCourses", new JSONArray(createdCourses));
         return obj;
     }
+    
 }
